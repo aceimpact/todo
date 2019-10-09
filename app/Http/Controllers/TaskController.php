@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -40,11 +41,14 @@ class TaskController extends Controller
         $this->validate($request, [
         'newTaskName' => 'required|min:5|max:255',
         ]);
+        $current_user = Auth::user();
         $task = new Task;
         $task->name = $request->newTaskName;
-        $task->save();
+        $current_user->tasks()->save($task);
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.index', [
+            'id' => $current_user->id,
+        ]);
     }
 
     /**
