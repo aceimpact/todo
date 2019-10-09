@@ -59,7 +59,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        Task::orderBy('id');
+        return view('tasks/show')->with('task', $task);
     }
 
     /**
