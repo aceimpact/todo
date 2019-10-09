@@ -45,10 +45,10 @@
                             <th scope="row">{{ $task->id }}</th>
                             <td>{{ $task->name }}</td>
                             <td>
-                                <a href="{{ route('tasks.edit', ['tasks' => $task->id]) }}" class="btn btn-outline-secondary">Edit</a>
+                                <a href="{{ action('TaskController@edit', $task) }}" class="btn btn-outline-secondary">Edit</a>
                             </td>
                             <td>
-                                <form action="{{ route('tasks.destroy', ['tasks' => $task->id]) }}" method="POST">
+                                <form action="{{  action('TaskController@destroy', $task) }}" method="POST">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="submit" class="btn btn-danger" value="Delete">
