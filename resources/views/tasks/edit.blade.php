@@ -4,8 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="offset-md-2 col-md-8">
-                <h1 class="text-center">Todo List Edit</h1>
-
+                <h1 class="text-center">タスクの編集</h1>
                 <form action="{{ route('tasks.update', [$task->id]) }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -15,8 +14,8 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Save Changes" class="btn btn-success btn-lg">
-                        <a href="{{ route('tasks.index') }}" class="btn btn-danger btn-lg float-right">Go Back</a>
+                        <input type="submit" value="変更を保存" class="btn btn-success">
+                        <a href="{{ route('tasks.index') }}" class="btn btn-danger float-right">戻る</a>
                     </div>
 
                 </form>
